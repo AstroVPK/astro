@@ -19,12 +19,14 @@ resolutions = np.array([RayleighCriteria(d) for d in diameters])
 eye_diameters = np.array([5.0e-3, 9.0e-3])
 eye_resolutions = np.array([5.0*1e-4*(180.0/math.pi)*3600.0, 2.0*1e-4*(180.0/math.pi)*3600.0])
 
+seeing_limits = [4, 2, 1, 0.2]
+
 plt.figure(0)
 plt.xlabel('diameter (mm)')
 plt.ylabel('resolution (arcsec)')
 plt.loglog(1000*diameters, resolutions, label='Rayleigh criteria resolution')
 plt.scatter(1000*eye_diameters, eye_resolutions, label='Human eye')
-plt.hlines()
+plt.hlines(seeing_limits, xmin=min(1000*diameters), xmax=max(1000*diameters))
 plt.show()
 
 pdb.set_trace()
